@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] What is the purpose of using _sessions_?
 
+Using sessions makes it possible to persist authentication information although new requests are made and the server refreshes. User sessions are stored in memory either via files or in the database on the server. When a user logs in with valid credentials, a new user session is created and a logged-in cookie is sent to the browser. When the user makes an authenticated request, they send the cookie to the backend, and the server checks the session based on the cookie, authenticates the user, and sends a response to the browser.
+
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
+
+Bcrypt uses hashing, a one-way process in which the password is translated into a string. By hashing the password before it is passed into the database, we never actually store the plaintext password in the database — and because it is hashed, the string that is stored can never be turned back into the password. 
 
 - [ ] What does bcrypt do to slow down attackers?
 
+Bcrypt autogenerates and adds a “salt”, a unique string, to the password before hashing it. The plaintext password and salt are hashed together, creating a string that is longer than the password alone. Length increases the number of possible combinations and therefore makes it much more difficult (/time intensive) for hackers to decipher a hashed password. It also allows the developer to select a base 2 number of times that the hash will be re-hashed. 
+
 - [ ] What are the three parts of the JSON Web Token?
+
+The three parts of a JSON Web Token (JWOT) are 1) the header, 2) the payload, and 3) the signature. The header contains the key of the algorithm used to make the token, and the type of token. The payload includes information that we want to store in the token. Lastly, the signature is created when the header and payload are encoded together and ‘signed’ with a secret string. 
 
 ## Minimum Viable Product
 
